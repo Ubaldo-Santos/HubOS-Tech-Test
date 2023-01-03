@@ -243,17 +243,17 @@
                                         <td>
                                             <a href="{{ route('rooms.show', ['hotel' => $hotel->id, 'room' => $room->id]) }}"
                                                 class="btn btn-primary btn-sm">View</a>
-
-                                            <form
-                                                action=" {{ route('rooms.destroy', ['hotel' => $hotel->id, 'room' => $room->id]) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="button" class="btn btn-danger m-1"
-                                                    onclick="confirm('Are you sure you want to delete this room?') ? this.parentElement.submit() : ''">
-                                                    Delete
-                                            </form>
-
+                                            @if (Auth::user()->hasRole(1))
+                                                <form
+                                                    action=" {{ route('rooms.destroy', ['hotel' => $hotel->id, 'room' => $room->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="btn btn-danger m-1"
+                                                        onclick="confirm('Are you sure you want to delete this room?') ? this.parentElement.submit() : ''">
+                                                        Delete
+                                                </form>
+                                            @endif
                                     </tr>
                                 @endforeach
 
