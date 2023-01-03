@@ -42,24 +42,29 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger ">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header"> Hotel Details
                     </div>
                     <div class="card-body">
-                        @if (session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                        @if ($errors->any())
-                            <div class="alert alert-danger ">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         <form action="{{ route('hotels.update', $hotel->id) }}" method="POST">
                             @csrf
                             <div class="row">
@@ -134,17 +139,20 @@
                                     </div>
 
                                 </div>
-                                <div class="col-sm-12">
-                                    <button type="button" class="btn btn-primary" onclick="edit()">Edit</button>
-                                    <button type="button" class="btn btn-dark"
-                                        onclick=" window.location.href = '{{ route('hotels.index') }}';
+                                @if (Auth::user()->hasRole(0))
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-primary" onclick="edit()">Edit</button>
+                                        <button type="button" class="btn btn-dark"
+                                            onclick=" window.location.href = '{{ route('hotels.index') }}';
                                     ">Go
-                                        Back</button>
+                                            Back</button>
 
-                                    <button type="reset" class=" btn btn-danger d-none" onclick="cancel()">Cancel</button>
-                                    <button type="submit" class=" btn btn-success d-none">Save</button>
+                                        <button type="reset" class=" btn btn-danger d-none"
+                                            onclick="cancel()">Cancel</button>
+                                        <button type="submit" class=" btn btn-success d-none">Save</button>
 
-                                </div>
+                                    </div>
+                                @endif
                             </div>
                         </form>
                     </div>
@@ -153,9 +161,7 @@
             <div class="col-md-12 py-4">
                 <div class="card">
                     <div class="card-header"> List of Hotels
-                        @if (Auth::user()->hasRole(0))
-                        @elseif (Auth::user()->hasRole(1))
-                        @endif
+
                     </div>
 
                     <div class="card-body">

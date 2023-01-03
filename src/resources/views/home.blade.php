@@ -21,7 +21,7 @@
                         @endif
 
                         @if (Auth::user()->hasRole(0))
-                            <a href="" class="btn btn-primary">Book a room</a>
+                            <a href=" {{ route('hotels.index') }} " class="btn btn-primary">Book a room</a>
                         @elseif (Auth::user()->hasRole(1))
                             <a href=" {{ route('hotels.index') }} " class="btn btn-primary">Hotels</a>
                         @endif
