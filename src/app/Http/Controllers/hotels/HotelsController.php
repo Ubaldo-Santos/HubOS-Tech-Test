@@ -4,6 +4,7 @@ namespace App\Http\Controllers\hotels;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hotels as Hotel;
+use App\Models\Rooms as Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,7 +60,10 @@ class HotelsController extends Controller
     {
         // get hotel
         $hotel = Hotel::find($id);
-        return view('hotels.show', compact('hotel'));
+
+        // get all rooms
+        $rooms = Room::where('hotel_id', $id)->get();
+        return view('hotels.show', compact('rooms'), compact('hotel'));
     }
 
 
