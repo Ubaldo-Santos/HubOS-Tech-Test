@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}
                         @if (Auth::user()->hasRole(0))
@@ -23,7 +23,7 @@
                         @if (Auth::user()->hasRole(0))
                             <a href="" class="btn btn-primary">Book a room</a>
                         @elseif (Auth::user()->hasRole(1))
-                            <a href="" class="btn btn-primary">Hotels</a>
+                            <a href=" {{ route('hotels.index') }} " class="btn btn-primary">Hotels</a>
                         @endif
                     </div>
                 </div>

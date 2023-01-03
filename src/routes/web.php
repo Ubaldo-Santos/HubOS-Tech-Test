@@ -27,13 +27,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // hotels
-Route::get('/hotels', [App\Http\Controllers\HotelController::class, 'index'])->name('hotels');
-Route::get('/hotels/create', [App\Http\Controllers\HotelController::class, 'create'])->name('hotels.create');
-Route::post('/hotels', [App\Http\Controllers\HotelController::class, 'store'])->name('hotels.store');
-Route::get('/hotels/{hotel}', [App\Http\Controllers\HotelController::class, 'show'])->name('hotels.show');
-Route::get('/hotels/{hotel}/edit', [App\Http\Controllers\HotelController::class, 'edit'])->name('hotels.edit');
-Route::put('/hotels/{hotel}', [App\Http\Controllers\HotelController::class, 'update'])->name('hotels.update');
-Route::delete('/hotels/{hotel}', [App\Http\Controllers\HotelController::class, 'destroy'])->name('hotels.destroy');
+Route::get('/hotels', [App\Http\Controllers\hotels\HotelsController::class, 'index'])->name('hotels.index');
+Route::get('/hotels/create', [App\Http\Controllers\hotels\HotelsController::class, 'create'])->name('hotels.create');
+Route::post('/hotels', [App\Http\Controllers\hotels\HotelsController::class, 'store'])->name('hotels.store');
+Route::get('/hotels/{hotel}', [App\Http\Controllers\hotels\HotelsController::class, 'show'])->name('hotels.show');
+Route::get('/hotels/{hotel}/edit', [App\Http\Controllers\hotels\HotelsController::class, 'edit'])->name('hotels.edit');
+Route::post('/hotels/{hotel}', [App\Http\Controllers\hotels\HotelsController::class, 'update'])->name('hotels.update');
+Route::delete('/hotels/{hotel}', [App\Http\Controllers\hotels\HotelsController::class, 'destroy'])->name('hotels.destroy');
+
 
 // rooms
 Route::get('/rooms', [App\Http\Controllers\RoomController::class, 'index'])->name('rooms');

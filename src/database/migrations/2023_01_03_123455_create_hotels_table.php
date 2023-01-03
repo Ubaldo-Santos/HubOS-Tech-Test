@@ -22,8 +22,8 @@ class CreateHotelsTable extends Migration
             $table->string('address_City');
             $table->string('address_Country');
 
-            $table->string('contact_phone');
-            $table->string('contact_email');
+            $table->string('contact_Phone');
+            $table->string('contact_Email');
 
             $table->timestamps();
         });

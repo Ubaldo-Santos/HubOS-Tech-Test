@@ -20,8 +20,8 @@ class hotels extends Seeder
             'address_PostalCode' => '08039',
             'address_City' => 'Barcelona',
             'address_Country' => 'Spain',
-            'contact_phone' => '932 95 28 00',
-            'contact_email' => 'whateverwhenever.wbarcelona@whotels.com',
+            'contact_Phone' => '932 95 28 00',
+            'contact_Email' => 'customer@whotels.com',
         ]);
 
         DB::table('hotels')->insert([
@@ -30,8 +30,8 @@ class hotels extends Seeder
             'address_PostalCode' => '10036',
             'address_City' => 'New York',
             'address_Country' => 'United States',
-            'contact_phone' => '212-221-1188',
-            'contact_email' => 'customer@hilton.com',
+            'contact_Phone' => '212-221-1188',
+            'contact_Email' => 'customer@hilton.com',
         ]);
 
         DB::table('hotels')->insert([
@@ -40,8 +40,8 @@ class hotels extends Seeder
             'address_PostalCode' => '94250 ',
             'address_City' => 'Paris',
             'address_Country' => 'France',
-            'contact_phone' => '1 84 23 37 60',
-            'contact_email' => 'customer@accor.com',
+            'contact_Phone' => '1 84 23 37 60',
+            'contact_Email' => 'customer@accor.com',
         ]);
     }
 }
