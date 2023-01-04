@@ -33,9 +33,13 @@ Route::get('/hotels/{hotel}', [App\Http\Controllers\hotels\HotelsController::cla
 Route::post('/hotels/{hotel}', [App\Http\Controllers\hotels\HotelsController::class, 'update'])->name('hotels.update');
 Route::delete('/hotels/{hotel}', [App\Http\Controllers\hotels\HotelsController::class, 'destroy'])->name('hotels.destroy');
 
-
 // rooms
 Route::post('/hotels/{hotel}/room', [App\Http\Controllers\rooms\RoomsController::class, 'store'])->name('rooms.store');
 Route::get('/hotels/{hotel}/room/{room}', [App\Http\Controllers\rooms\RoomsController::class, 'show'])->name('rooms.show');
 Route::post('/hotels/{hotel}/room/{room}', [App\Http\Controllers\rooms\RoomsController::class, 'update'])->name('rooms.update');
 Route::delete('/hotels/{hotel}/room/{room}', [App\Http\Controllers\rooms\RoomsController::class, 'destroy'])->name('rooms.destroy');
+
+// Bookings
+Route::get('/hotels/{hotel}/room/{room}/booking', [App\Http\Controllers\bookings\BookingsController::class, 'store'])->name('bookings.store');
+Route::get('/hotels/{hotel}/room/{room}/booking/list', [App\Http\Controllers\bookings\BookingsController::class, 'list'])->name('bookings.list');
+Route::get('/hotels/{hotel}/room/{room}/booking/{booking}/del', [App\Http\Controllers\bookings\BookingsController::class, 'destroy'])->name('bookings.destroy');

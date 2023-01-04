@@ -20,7 +20,6 @@ class CreateBookingsTable extends Migration
             $table->integer('guests');
             $table->date('check_in');
             $table->date('check_out');
-            $table->string('status');
             $table->timestamps();
 
         });
